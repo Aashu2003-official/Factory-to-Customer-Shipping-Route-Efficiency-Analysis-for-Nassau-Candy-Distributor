@@ -4,6 +4,8 @@ This project delivers a complete VS Code-ready Streamlit analysis for Nassau Can
 
 The project uses the provided Nassau Candy shipment file and the factory/product correlation supplied in the brief. The raw dataset is already included at `data/raw/Nassau Candy Distributor.csv`.
 
+# Live Link: https://aashu2003-official-factory-to-customer-shipping-rout-app-dx7sgt.streamlit.app/
+
 ## What is included
 
 - `app.py`: Streamlit dashboard with overview, map, ship mode, and drill-down modules.

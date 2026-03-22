@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 220" role="img" aria-labelledby="title desc">
+  <title id="title">Nassau Candy Logo</title>
+  <desc id="desc">Nassau Candy Specialty Confections and Fine Foods</desc>
+  <rect width="960" height="220" fill="#fffaf4"/>
+  <text x="480" y="88" text-anchor="middle" font-family="Times New Roman, Georgia, serif" font-size="74" letter-spacing="4" fill="#6a5423">NASSAU CANDY</text>
+  <line x1="30" y1="108" x2="360" y2="108" stroke="#8b6a2f" stroke-width="4"/>
+  <line x1="600" y1="108" x2="930" y2="108" stroke="#8b6a2f" stroke-width="4"/>
+  <text x="480" y="162" text-anchor="middle" font-family="Times New Roman, Georgia, serif" font-size="36" fill="#6a5423">Specialty Confections &amp; Fine Foods</text>
+</svg>

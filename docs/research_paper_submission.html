@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Factory-to-Customer Shipping Route Efficiency Analysis for Nassau Candy Distributor</title>
+  <style>
+    @page {
+      size: A4;
+      margin: 0.7in 0.7in 0.8in 0.7in;
+    }
+
+    :root {
+      --ink: #111111;
+      --muted: #4f4f4f;
+      --rule: #bdbdbd;
+      --accent: #1f3c88;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      color: var(--ink);
+      font-family: "Times New Roman", Georgia, serif;
+      background: #ffffff;
+    }
+
+    .paper {
+      max-width: 8.1in;
+      margin: 0 auto;
+      padding: 0.1in 0.1in 0.2in;
+    }
+
+    .journal-meta {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 11pt;
+      color: var(--muted);
+      border-bottom: 1px solid var(--rule);
+      padding-bottom: 8px;
+      margin-bottom: 18px;
+    }
+
+    h1 {
+      margin: 0 0 10px;
+      text-align: center;
+      font-size: 22pt;
+      line-height: 1.2;
+      font-weight: 700;
+    }
+
+    .author-block {
+      text-align: center;
+      margin-bottom: 20px;
+      font-size: 11pt;
+      line-height: 1.45;
+    }
+
+    .author-block .label {
+      font-weight: 700;
+    }
+
+    .author-block .note {
+      color: var(--muted);
+      font-style: italic;
+    }
+
+    .columns {
+      column-count: 2;
+      column-gap: 28px;
+      font-size: 11pt;
+      line-height: 1.32;
+      text-align: justify;
+    }
+
+    .columns p {
+      margin: 0 0 9px;
+    }
+
+    .columns h2 {
+      font-size: 14pt;
+      margin: 14px 0 8px;
+      font-weight: 700;
+      break-after: avoid;
+    }
+
+    .columns .block {
+      break-inside: avoid;
+      margin-bottom: 10px;
+    }
+
+    .abstract-title,
+    .keywords-title {
+      font-weight: 700;
+    }
+
+    .small-note {
+      margin-top: 20px;
+      padding-top: 8px;
+      border-top: 1px solid var(--rule);
+      font-size: 10pt;
+      color: var(--muted);
+    }
+  </style>
+</head>
+<body>
+  <div class="paper">
+    <div class="journal-meta">
+      <div>Research Paper Submission Draft</div>
+      <div>Logistics Analytics Study | March 2026</div>
+    </div>
+
+    <h1>Factory-to-Customer Shipping Route Efficiency Analysis for Nassau Candy Distributor</h1>
+
+    <div class="author-block">
+      <div class="label">Professional Project Research Paper</div>
+      <div>Prepared from the Nassau Candy Distributor shipment dataset and factory-to-product reference mapping</div>
+      <div class="note">Author and institutional metadata may be inserted by the submitter before journal or repository upload.</div>
+    </div>
+
+    <div class="columns">
+      <div class="block">
+        <p><span class="abstract-title">Abstract</span> Logistics performance is strongly shaped by route-level execution, yet many distribution environments continue to operate without a rigorous understanding of which origin-to-destination lanes are consistently efficient and which repeatedly underperform. This paper presents a factory-to-customer shipping route efficiency analysis for Nassau Candy Distributor using 10,194 shipment records spanning the United States and Canada. The study combines data validation, feature engineering, route aggregation, delay benchmarking, ship-mode comparison, and geographic bottleneck analysis to convert raw order data into actionable operational intelligence. Each shipment was mapped from product to factory, and route performance was analyzed at the factory-to-state and factory-to-region levels using average lead time, variability, shipment volume, delay frequency, and a normalized route efficiency score. The empirical results reveal 196 factory-to-state routes and 20 factory-to-region routes, with route exposure concentrated heavily in the chocolate product network. High-volume efficient lanes include Lot's O' Nuts to Virginia and Wicked Choccy's to Virginia, while the most concerning high-volume underperforming lanes include Wicked Choccy's to Indiana and Tennessee as well as Lot's O' Nuts to Tennessee. The paper also identifies a significant data quality anomaly in the shipment calendar fields, which limits literal service-level interpretation of lead times and redirects the analysis toward comparative benchmarking. In addition to the analytical findings, the project contributes a Streamlit-based decision-support dashboard for live route monitoring, geographic exploration, and operational drill-down. The study demonstrates how distributor shipment history can be transformed into route-level intelligence that supports proactive logistics optimization.</p>
+      </div>
+
+      <div class="block">
+        <p><span class="keywords-title">Keywords:</span> shipping analytics, logistics intelligence, route efficiency, lead time benchmarking, geographic bottlenecks, ship mode analysis, distribution performance, Streamlit dashboard.</p>
+      </div>
+
+      <h2>1. Introduction</h2>
+      <p>Nassau Candy Distributor operates in a geographically dispersed environment where products manufactured at multiple factory locations must reach customers across several customer regions. In such a setting, route efficiency is more than a transportation metric; it is a driver of customer satisfaction, inventory reliability, operating cost, and long-term scalability. When route performance is not measured systematically, logistics intervention tends to be reactive, focused on visible delays rather than structural patterns embedded in the distribution network.</p>
+      <p>The present study was designed to address that gap. Rather than examining shipping performance at an aggregate company level alone, the analysis focuses on the operational unit that is most meaningful for intervention: the factory-to-customer route. By organizing shipments into origin-destination lanes, the study creates visibility into which routes are relatively efficient, which demonstrate persistent latency, and where performance degradation intersects with high shipment volume.</p>
+      <p>The project also responds to a broader analytical need in logistics organizations: converting transaction-level data into route-level intelligence that supports prioritization. Without such a framework, leadership may recognize that delays exist but remain unable to determine whether the problem is concentrated in a specific geography, linked to a particular ship mode, or driven by a subset of factories. The route-efficiency lens used here is therefore intended not only as a descriptive exercise, but as a practical decision-support mechanism.</p>
+
+      <h2>2. Problem Context and Objectives</h2>
+      <p>The business problem is rooted in limited visibility. Nassau Candy Distributor lacked a consolidated view of which factory-to-customer routes were operating effectively, which routes were associated with frequent delays, how performance differed by state and region, and whether ship modes were behaving in line with expected service-tier logic. In the absence of that visibility, route optimization remains reactive and fragmented.</p>
+      <p>Accordingly, the study pursued five objectives. First, it sought to validate the integrity of the available shipment data and identify records that would compromise lead-time measurement. Second, it aimed to engineer route-specific features that would support aggregation at the state and region levels. Third, it benchmarked efficient and inefficient lanes using standardized route metrics. Fourth, it isolated geographic bottlenecks where high shipment intensity coexisted with poor performance. Fifth, it compared lead-time behavior across ship modes in order to surface potential service-design anomalies.</p>
+
+      <h2>3. Dataset Description and Validation</h2>
+      <p>The analysis uses a shipment file containing 10,194 records. The dataset includes order identifiers, order dates, shipment dates, ship modes, customer geography, product metadata, sales, units, gross profit, and cost. Destination coverage consists of 9,994 shipments to the United States and 200 shipments to Canada. Product-level factory mapping was supplied separately and linked each product name to one of five factory locations: Lot's O' Nuts, Wicked Choccy's, Sugar Shack, Secret Factory, and The Other Factory.</p>
+      <p>Data cleaning began with day-first parsing of the order and ship date fields. Categorical variables such as region, state or province, ship mode, and product name were standardized for consistent grouping. Sales, units, gross profit, and cost fields were converted to numeric form. Products were then mapped to their assigned factories using the provided product-factory correlation. Shipping lead time was calculated as the difference in days between ship date and order date, and route fields were created for both factory-to-state and factory-to-region analysis.</p>
+      <p>The dataset passed several important structural checks: no missing ship dates were identified, no negative lead times appeared after date parsing, and all products were successfully mapped to factories. However, a critical limitation emerged from temporal validation. Order dates range from January 2, 2024 through December 31, 2025, while ship dates range from June 30, 2026 through June 28, 2030. This produces unusually large lead-time values, with a mean of 1,320.84 days and a 75th percentile threshold of 1,638 days. As a result, the study interprets lead-time outcomes primarily as relative route benchmarks rather than literal transit durations.</p>
+
+      <h2>4. Analytical Framework</h2>
+      <p>The analytical workflow consisted of four layers. The first layer was feature engineering, which produced factory identifiers, route labels, shipping lead time, shipment month fields, and destination flags. The second layer was route aggregation, where each route was defined either as factory to state or factory to region. For each route, the analysis computed total shipments, mean lead time, standard deviation of lead time, delay frequency, total sales, and gross profit.</p>
+      <p>The third layer was efficiency benchmarking. Routes were ranked from fastest to slowest using average lead time, and a normalized route efficiency score was constructed so that lower average lead times yielded higher efficiency values on a 0 to 100 scale. Delay frequency was measured as the share of shipments exceeding the selected threshold, which by default was set to the 75th percentile lead time. This threshold-based measure provides a relative indicator of operational slippage even in the presence of the date anomaly.</p>
+      <p>The fourth layer was geographic and ship-mode analysis. Geographic evaluation focused on both state-level and region-level concentration of latency, incorporating shipment volume and delay rate into a composite bottleneck score. Ship-mode analysis compared Standard Class, Second Class, First Class, and Same Day using average lead time, dispersion, delay behavior, and revenue contribution. Together, these measures created a multi-angle view of operational performance rather than relying on a single KPI.</p>
+
+      <h2>5. Empirical Findings</h2>
+      <p>The route network contained 196 factory-to-state routes and 20 factory-to-region routes. Shipment intensity was highly concentrated in the chocolate portfolio. Lot's O' Nuts accounted for 5,692 orders, while Wicked Choccy's accounted for 4,152. The remaining factories represented relatively small shares of total traffic. This concentration matters because it implies that improvements in the dominant chocolate routes are likely to produce the greatest network-level benefit.</p>
+      <p>Among high-volume routes with at least 50 shipments, the strongest performers were Lot's O' Nuts to Virginia with an average lead time of 1,229.49 days, Wicked Choccy's to Virginia at 1,238.88 days, Lot's O' Nuts to Oregon at 1,245.19 days, Wicked Choccy's to Michigan at 1,291.85 days, and Lot's O' Nuts to Massachusetts at 1,292.12 days. Even though the absolute magnitudes are distorted by the date anomaly, these routes still provide relative evidence of lanes that behave more efficiently than peer routes and may encode replicable operating practices.</p>
+      <p>The most concerning high-volume routes were Wicked Choccy's to Indiana at 1,402.46 days, Wicked Choccy's to Tennessee at 1,393.76 days, Lot's O' Nuts to Tennessee at 1,390.96 days, Wicked Choccy's to Washington at 1,375.72 days, and Lot's O' Nuts to Maryland at 1,370.67 days. These routes deserve priority because they combine poor comparative performance with meaningful throughput, making them more operationally important than isolated low-volume outliers.</p>
+      <p>At the region level, the observed differences were modest but still directionally informative. The Gulf region performed best with an average lead time of 1,311.37 days, followed by the Pacific at 1,322.19 days, the Atlantic at 1,322.75 days, and the Interior at 1,323.09 days. The narrow spread suggests that much of the performance variation in this dataset exists at the route and state level rather than being fully explained by regional averages alone. This finding supports granular route review rather than broad regional intervention.</p>
+      <p>State-level bottleneck interpretation requires additional nuance. Some of the highest average lead-time states, such as West Virginia and North Dakota, have low shipment counts and therefore should not automatically dominate management attention. By contrast, states such as Tennessee and Washington appear more strategically relevant because they combine elevated lead times with materially larger order volumes. This reinforces the value of integrating volume into bottleneck identification rather than ranking solely by average delay.</p>
+      <p>Ship-mode behavior also produced a notable anomaly. Standard Class averaged 1,314.33 days, Second Class averaged 1,323.85 days, Same Day averaged 1,333.44 days, and First Class averaged 1,338.28 days. In a conventional logistics environment, premium service tiers would be expected to outperform lower service tiers on transit time. The reversed ordering observed here strongly suggests that ship-date quality, service-label quality, or both should be validated before service-policy conclusions are drawn. Nevertheless, the result is analytically useful because it signals that the operational metadata itself may need governance review.</p>
+
+      <h2>6. Dashboard Contribution and Decision Support</h2>
+      <p>The project does not end with static findings. A Streamlit dashboard was developed to convert the analytical framework into a reusable decision-support interface. The dashboard includes a route efficiency overview, a geographic shipping map with US heatmaps, a ship-mode comparison module, and a route drill-down view for shipment-level inspection. Users can filter by order-date range, destination geography, ship mode, and lead-time threshold.</p>
+      <p>This interactive layer adds practical value in three ways. First, it allows leadership to move beyond static summaries and evaluate route behavior under different filter selections. Second, it supports exploratory diagnosis, enabling users to trace bottlenecks from region to state and then to route-specific order timelines. Third, it creates a foundation for continuous monitoring if corrected operational data are later supplied. In other words, the dashboard operationalizes the research findings and turns them into a living analytical product.</p>
+
+      <h2>7. Managerial Implications</h2>
+      <p>Several managerial implications follow from the results. The first is prioritization. Because route exposure is concentrated in a relatively small number of high-volume lanes, the company should focus investigation on those lanes where poor comparative performance and meaningful demand coincide, especially the Tennessee, Indiana, Washington, and Maryland corridors associated with the major chocolate factories. The second implication is governance. The unexpected ship-mode ordering and extreme lead-time magnitudes indicate that upstream data controls need review before these metrics are used for contractual or service-level reporting.</p>
+      <p>A third implication concerns process design. Efficient lanes such as the Virginia and Oregon routes may serve as internal benchmarks for planning discipline, inventory handoff, or order-release timing. Once the date fields are validated, a comparative operating study between high-performing and underperforming routes could reveal whether the differences are explained by geography, scheduling, or execution practice. That would allow improvement work to move from description to intervention.</p>
+
+      <h2>8. Limitations and Future Work</h2>
+      <p>The main limitation of this study is the date anomaly embedded in the source data. Because the ship-date range begins substantially later than the order-date range, the resulting lead-time values cannot be interpreted as literal shipping durations. This does not invalidate the comparative route logic entirely, but it does constrain the strength of conclusions that can be made about service-level compliance or customer delivery performance in calendar terms.</p>
+      <p>Future work should begin with corrected timestamp validation and then expand the model with additional logistics attributes such as carrier, warehouse departure time, mode-specific cost, promised delivery date, and exception events. Those additions would support richer causal analysis, cost-time trade-off evaluation, and more precise bottleneck diagnosis. A subsequent phase could also introduce predictive route-risk scoring to anticipate likely delays before they occur.</p>
+
+      <h2>9. Conclusion</h2>
+      <p>This study demonstrates how a distributor's shipment history can be converted into route-level operational intelligence. By integrating data cleaning, route construction, aggregation, benchmarking, geographic interpretation, and dashboard delivery, the project provides a structured view of how Nassau Candy Distributor's factory-to-customer network behaves. Although the current dataset contains a material date-quality limitation, the analysis still surfaces meaningful relative patterns: high-volume efficient routes, high-volume problem routes, regional bottleneck tendencies, and ship-mode anomalies.</p>
+      <p>For practitioners, the central message is clear. Route efficiency should be managed as a measurable, comparable operating construct rather than inferred from anecdotal delay events. With corrected dates and continued dashboard use, Nassau Candy Distributor would be positioned to shift from reactive logistics troubleshooting toward targeted, data-driven route optimization.</p>
+
+      <div class="block">
+        <p class="small-note">Data source statement: This paper is based on the provided Nassau Candy Distributor shipment dataset, factory coordinate list, and product-to-factory mapping supplied in the project brief. No external dataset was introduced into the empirical results presented here.</p>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
